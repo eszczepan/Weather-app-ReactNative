@@ -30,7 +30,9 @@ const Weather: FC<IProps> = ({ weather, error, loading }) => {
   if (weather.data === undefined) {
     return (
       <View style={styles.container}>
-        <Text style={styles.error}>Invalid city</Text>
+        <Text style={styles.info}>
+          You have entered an invalid city. Please try again.
+        </Text>
       </View>
     );
   }
@@ -60,10 +62,14 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10,
   },
-
   error: {
     color: "red",
     fontSize: 20,
+    textAlign: "center",
+  },
+  info: {
+    color: "#333",
+    fontSize: 24,
     textAlign: "center",
   },
 });
