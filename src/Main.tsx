@@ -15,9 +15,6 @@ import { IAppState } from "../store";
 import SearchForm from "./components/molecules/SearchForm/SearchForm";
 import Weather from "./components/molecules/Weather/Weather";
 
-const HEIGHT = Dimensions.get("window").height;
-const WIDTH = Dimensions.get("window").width;
-
 const App: FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -26,7 +23,7 @@ const App: FC = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    // dispatch(fetchWeather("Cracow"));
+    dispatch(fetchWeather("Cracow"));
     setIsLoading(false);
   }, [dispatch]);
 
@@ -63,8 +60,6 @@ const App: FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: HEIGHT,
-    width: WIDTH,
     paddingHorizontal: 20,
   },
 });

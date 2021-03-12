@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import {
   ActivityIndicator,
-  FlatList,
+  ScrollView,
   StyleSheet,
-  View,
   Text,
+  View,
 } from "react-native";
 
 import { IWeather } from "../../../../store/models";
@@ -19,26 +19,40 @@ interface IProps {
 }
 
 const Weather: FC<IProps> = ({ weather, error, loading }) => {
-  return loading ? (
-    <ActivityIndicator />
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.error}>{error}</Text>
+      </View>
+    );
+  }
+
+  return loading || weather === null ? (
+    <View style={styles.container}>
+      <ActivityIndicator />
+    </View>
   ) : (
     <View style={styles.container}>
       <MainBox city={weather.city_name} weather={weather.data[0]} />
 
-      {/* <FlatList> */}
-      <SmallBox />
-      <SmallBox />
-      <SmallBox />
-      <SmallBox />
-      <SmallBox />
-      {/* </FlatList> */}
+      <ScrollView>
+        {weather.data.map((day: any, index: number) =>
+          index === 0 ? null : <SmallBox key={index} weather={day} />
+        )}
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginTop: 10,
+  },
+
+  error: {
+    color: "red",
+    fontSize: 20,
+    textAlign: "center",
   },
 });
 

@@ -14,7 +14,7 @@ const SearchForm: FC<IProps> = ({
   onSubmit,
 }) => {
   return (
-    <View style={styles.searchBox}>
+    <View style={styles.container}>
       <TextInput
         style={styles.searchInput}
         placeholder="Search..."
@@ -29,24 +29,24 @@ const SearchForm: FC<IProps> = ({
 };
 
 const styles = StyleSheet.create({
-  searchBox: {
+  container: {
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    paddingTop: 10,
+    paddingTop: 55,
+    paddingBottom: 15,
   },
   searchInput: {
-    height: "30%",
+    height: "100%",
     width: "85%",
     borderColor: "#555",
     borderWidth: 1,
     borderRadius: 20,
     color: "#000",
     paddingHorizontal: 15,
+    paddingVertical: 5,
   },
   searchButton: {
-    height: "35%",
-    width: "8%",
     justifyContent: "center",
     alignItems: "center",
   },
