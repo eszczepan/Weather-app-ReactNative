@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { FC, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Alert,
   Dimensions,
@@ -11,19 +11,23 @@ import {
 } from "react-native";
 
 import { fetchWeather } from "../store/actions";
-import SearchForm from "./components/SearchForm/SearchForm";
-import MainBox from "./components/MainBox/MainBox";
+import { IAppState } from "../store";
+import SearchForm from "./components/molecules/SearchForm/SearchForm";
+import Weather from "./components/molecules/Weather/Weather";
 
 const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
 
 const App: FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const dispatch = useDispatch();
+  const { data, error } = useSelector((state: IAppState) => state.weather);
 
   useEffect(() => {
-    dispatch(fetchWeather("Paris"));
+    setIsLoading(true);
+    // dispatch(fetchWeather("Cracow"));
+    setIsLoading(false);
   }, [dispatch]);
 
   const handleSearchSubmit = () => {
@@ -38,6 +42,7 @@ const App: FC = () => {
       dispatch(fetchWeather(searchValue.trim()));
       setSearchValue("");
       Keyboard.dismiss();
+      setIsLoading(false);
     }
   };
 
@@ -49,7 +54,7 @@ const App: FC = () => {
           onSetSearchValue={setSearchValue}
           onSubmit={handleSearchSubmit}
         />
-        <MainBox />
+        <Weather loading={isLoading} weather={data} error={error} />
         <StatusBar style="auto" />
       </View>
     </TouchableWithoutFeedback>

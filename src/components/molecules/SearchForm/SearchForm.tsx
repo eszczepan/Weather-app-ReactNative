@@ -30,15 +30,14 @@ const SearchForm: FC<IProps> = ({
 
 const styles = StyleSheet.create({
   searchBox: {
-    height: "20%",
-    width: "100%",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
+    paddingTop: 10,
   },
   searchInput: {
-    height: "35%",
-    width: "80%",
+    height: "30%",
+    width: "85%",
     borderColor: "#555",
     borderWidth: 1,
     borderRadius: 20,
@@ -46,7 +45,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   searchButton: {
-    marginLeft: "5%",
     height: "35%",
     width: "8%",
     justifyContent: "center",

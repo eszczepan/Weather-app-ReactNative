@@ -28,7 +28,6 @@ export const fetchWeather: ActionCreator<
       const response = await axios.get(
         `http://api.weatherbit.io/v2.0/forecast/daily?city=${city}&key=${API_KEY}`
       );
-      console.log(response.data);
       dispatch({
         type: WeatherActionTypes.GET_WEATHER,
         payload: response.data,
