@@ -1,5 +1,11 @@
 import React, { FC } from "react";
-import { TextInput, TouchableOpacity, StyleSheet, View } from "react-native";
+import {
+  TextInput,
+  TouchableOpacity,
+  StatusBar,
+  StyleSheet,
+  View,
+} from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 
 interface IProps {
@@ -33,8 +39,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    paddingTop: 55,
-    paddingBottom: 15,
+    marginTop: StatusBar.currentHeight,
+    paddingVertical: 20,
   },
   searchInput: {
     height: "100%",

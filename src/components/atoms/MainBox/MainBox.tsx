@@ -37,6 +37,19 @@ const MainBox: FC<IProps> = ({ city, weather }) => {
           <View
             style={[styles.detailsBox, styles.borderRight, styles.borderBottom]}
           >
+            <Text style={styles.detailsDesc}>MIN. TEMPERATURE</Text>
+            <Text style={styles.baseText}>{weather.min_temp} &#8451;</Text>
+          </View>
+          <View style={[styles.detailsBox, styles.borderBottom]}>
+            <Text style={styles.detailsDesc}>MAX. TEMPERATURE</Text>
+            <Text style={styles.baseText}>{weather.max_temp} &#8451;</Text>
+          </View>
+        </View>
+
+        <View style={styles.detailsRow}>
+          <View
+            style={[styles.detailsBox, styles.borderRight, styles.borderBottom]}
+          >
             <Text style={styles.detailsDesc}>WIND</Text>
             <Text style={styles.baseText}>
               {weather.wind_gust_spd.toFixed(1)} m/s

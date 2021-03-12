@@ -27,9 +27,21 @@ const Weather: FC<IProps> = ({ weather, error, loading }) => {
     );
   }
 
-  return loading || weather === null ? (
+  if (weather.data === undefined) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.error}>Invalid city</Text>
+      </View>
+    );
+  }
+
+  if (!loading && !weather) {
+    return null;
+  }
+
+  return loading || weather.data === null ? (
     <View style={styles.container}>
-      <ActivityIndicator />
+      <ActivityIndicator size="large" color="#427BFF" />
     </View>
   ) : (
     <View style={styles.container}>

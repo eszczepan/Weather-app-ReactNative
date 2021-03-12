@@ -51,7 +51,9 @@ const App: FC = () => {
           onSetSearchValue={setSearchValue}
           onSubmit={handleSearchSubmit}
         />
-        <Weather loading={isLoading} weather={data} error={error} />
+        {data !== null ? (
+          <Weather loading={isLoading} weather={data} error={error} />
+        ) : null}
         <StatusBar style="auto" />
       </View>
     </TouchableWithoutFeedback>
