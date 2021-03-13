@@ -2,7 +2,7 @@
 
 Weather forecast app provides detailed local forecast & weather forecast world wide, the app provides the current temperature in Celsius according to city time zone.
 
-The weather app also provides atmospheric minimal and maximal temperature throughout the day, pressure, UV index rain precipitation, wind speed, in addition to 15 days in future.
+The weather app also provides atmospheric pressure, UV index, rain precipitation, wind speed and minimal and maximal temperature throughout the day, in addition to 15 days in future.
 
 I used a public API in the project [weatherbit.io](https://www.weatherbit.io/).
 
