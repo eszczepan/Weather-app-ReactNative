@@ -3,7 +3,6 @@ import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Alert,
-  Dimensions,
   Keyboard,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -11,9 +10,10 @@ import {
 } from "react-native";
 
 import { fetchWeather } from "../store/actions";
-import { IAppState } from "../store";
+import { IAppState } from "../store/models";
 import SearchForm from "./components/molecules/SearchForm/SearchForm";
 import Weather from "./components/molecules/Weather/Weather";
+import ModalDetials from "./components/molecules/ModalDetails/ModalDetials";
 
 const App: FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
@@ -46,6 +46,7 @@ const App: FC = () => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
+        {data !== null ? <ModalDetials weather={data} /> : null}
         <SearchForm
           searchValue={searchValue}
           onSetSearchValue={setSearchValue}
@@ -62,6 +63,7 @@ const App: FC = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingHorizontal: 20,
   },
 });

@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import {
   ActivityIndicator,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -46,20 +47,23 @@ const Weather: FC<IProps> = ({ weather, error, loading }) => {
       <ActivityIndicator size="large" color="#427BFF" />
     </View>
   ) : (
-    <View style={styles.container}>
-      <MainBox city={weather.city_name} weather={weather.data[0]} />
-
+    <SafeAreaView style={styles.container}>
       <ScrollView>
+        <MainBox city={weather.city_name} weather={weather.data[0]} />
+
         {weather.data.map((day: any, index: number) =>
-          index === 0 ? null : <SmallBox key={index} weather={day} />
+          index === 0 ? null : (
+            <SmallBox key={index} weather={day} index={index} />
+          )
         )}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginTop: 10,
   },
   error: {

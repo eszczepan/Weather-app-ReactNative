@@ -1,6 +1,12 @@
 export interface IWeatherState {
   data: IWeather[] | null;
   error: string;
+  modalVisible: boolean;
+  detailsDayIndex: number;
+}
+
+export interface IAppState {
+  weather: IWeatherState;
 }
 
 export interface IWeather {

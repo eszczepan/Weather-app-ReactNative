@@ -1,18 +1,28 @@
 import React, { FC } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 
+import Icon from "react-native-vector-icons/AntDesign";
 import { IWeather } from "../../../../store/models";
 
 interface IProps {
   weather: IWeather;
   city: string;
+  modal?: boolean;
+  onCloseModal?: any;
 }
 
-const MainBox: FC<IProps> = ({ city, weather }) => {
+const MainBox: FC<IProps> = ({ city, weather, modal, onCloseModal }) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
-        <Text style={styles.baseText}>{city}</Text>
+        {modal ? (
+          <TouchableOpacity style={styles.button} onPress={onCloseModal}>
+            <Icon name="left" size={20} color="#fff" />
+          </TouchableOpacity>
+        ) : (
+          <Text style={styles.baseText}>{city}</Text>
+        )}
+
         <Text style={styles.baseText}>{weather.datetime}</Text>
       </View>
       <View style={styles.image}>
@@ -84,6 +94,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
+    flex: 1,
+    overflow: "hidden",
   },
   baseText: {
     color: "#fff",
@@ -94,12 +106,16 @@ const styles = StyleSheet.create({
     height: 100,
   },
   info: {
+    alignSelf: "flex-start",
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     padding: 20,
     paddingBottom: 0,
+  },
+  button: {
+    width: 40,
   },
   image: {
     justifyContent: "center",
@@ -121,6 +137,9 @@ const styles = StyleSheet.create({
     width: "100%",
     borderTopWidth: 1,
     borderTopColor: "#c0d3ff",
+    alignSelf: "flex-end",
+    borderBottomWidth: 1,
+    borderBottomColor: "#c0d3ff",
   },
   detailsDesc: {
     color: "#c0d3ff",

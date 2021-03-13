@@ -6,22 +6,13 @@ import { API_KEY } from "../../config.json";
 import { WeatherActionTypes } from "../types";
 import { IWeather, IWeatherState } from "../models";
 
-export interface IWeatherGetWeatherAction {
+export interface WeatherActions {
   type: WeatherActionTypes.GET_WEATHER;
   weather: IWeather[];
 }
 
-export type WeatherActions = IWeatherGetWeatherAction;
-
-const setError = (err: any) => {
-  return {
-    type: WeatherActionTypes.GET_WEATHER_ERROR,
-    payload: err,
-  };
-};
-
 export const fetchWeather: ActionCreator<
-  ThunkAction<Promise<any>, IWeatherState, null, IWeatherGetWeatherAction>
+  ThunkAction<Promise<any>, IWeatherState, null, WeatherActions>
 > = (city: string) => {
   return async (dispatch: Dispatch) => {
     try {
@@ -33,7 +24,18 @@ export const fetchWeather: ActionCreator<
         payload: response.data,
       });
     } catch (err) {
-      dispatch(setError(err.message));
+      dispatch({
+        type: WeatherActionTypes.GET_WEATHER_ERROR,
+        payload: err,
+      });
     }
   };
+};
+
+export const setDetialsDay = (day: number) => {
+  return { type: WeatherActionTypes.SET_DETAILS_DAY, payload: day };
+};
+
+export const setModalVisible = (visible: boolean) => {
+  return { type: WeatherActionTypes.SET_MODAL_VISIBLE, payload: visible };
 };

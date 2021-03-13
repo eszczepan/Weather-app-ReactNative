@@ -1,13 +1,23 @@
 import React, { FC } from "react";
+import { useDispatch } from "react-redux";
 import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 import Icon from "react-native-vector-icons/AntDesign";
+import { setModalVisible, setDetialsDay } from "../../../../store/actions";
 
 interface IProps {
   weather: any;
+  index: number;
 }
 
-const Smallbox: FC<IProps> = ({ weather }) => {
+const Smallbox: FC<IProps> = ({ weather, index }) => {
+  const dispatch = useDispatch();
+
+  const handleButtonPress = () => {
+    dispatch(setDetialsDay(index));
+    dispatch(setModalVisible(true));
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -21,7 +31,7 @@ const Smallbox: FC<IProps> = ({ weather }) => {
             uri: `https://www.weatherbit.io/static/img/icons/${weather.weather.icon}.png`,
           }}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
           <Icon name="right" size={16} color="#000" />
         </TouchableOpacity>
       </View>
