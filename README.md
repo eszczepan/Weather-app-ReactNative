@@ -8,7 +8,7 @@ I used a public API in the project [weatherbit.io](https://www.weatherbit.io/).
 
 <p float="left" align="center">
   <img src="./assets/weather-mockup1.png" width="450" alt="Contacts-screenshot">
-    <img src="./assets/weather-mockup1.png"  width="450" alt="Contacts-screenshot">
+    <img src="./assets/weather-mockup2.png"  width="450" alt="Contacts-screenshot">
 </p>
 
 ## Tech/framework
