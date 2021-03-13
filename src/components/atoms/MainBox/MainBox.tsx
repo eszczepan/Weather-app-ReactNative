@@ -92,10 +92,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     backgroundColor: "#427BFF",
     borderRadius: 20,
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
     flex: 1,
-    overflow: "hidden",
   },
   baseText: {
     color: "#fff",
@@ -138,8 +137,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: "#c0d3ff",
     alignSelf: "flex-end",
-    borderBottomWidth: 1,
-    borderBottomColor: "#c0d3ff",
   },
   detailsDesc: {
     color: "#c0d3ff",
@@ -161,8 +158,6 @@ const styles = StyleSheet.create({
     borderRightColor: "#c0d3ff",
   },
   borderBottom: {
-    borderRightWidth: 1,
-    borderRightColor: "#c0d3ff",
     borderBottomWidth: 1,
     borderBottomColor: "#c0d3ff",
   },

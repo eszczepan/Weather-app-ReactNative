@@ -49,7 +49,9 @@ const Weather: FC<IProps> = ({ weather, error, loading }) => {
   ) : (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <MainBox city={weather.city_name} weather={weather.data[0]} />
+        <View style={styles.mainBoxContainer}>
+          <MainBox city={weather.city_name} weather={weather.data[0]} />
+        </View>
 
         {weather.data.map((day: any, index: number) =>
           index === 0 ? null : (
@@ -75,6 +77,9 @@ const styles = StyleSheet.create({
     color: "#333",
     fontSize: 24,
     textAlign: "center",
+  },
+  mainBoxContainer: {
+    height: "35%",
   },
 });
 
