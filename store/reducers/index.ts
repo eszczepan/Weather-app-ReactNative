@@ -12,27 +12,28 @@ export const weatherReducer = (
   state = initialState,
   action: any
 ): IWeatherState => {
-  switch (action.type) {
+  const { payload, type } = action;
+  switch (type) {
     case WeatherActionTypes.GET_WEATHER:
       return {
         ...state,
-        data: action.payload,
+        data: payload,
         error: "",
       };
     case WeatherActionTypes.GET_WEATHER_ERROR:
       return {
         ...state,
-        error: action.payload,
+        error: payload,
       };
     case WeatherActionTypes.SET_DETAILS_DAY:
       return {
         ...state,
-        detailsDayIndex: action.payload,
+        detailsDayIndex: payload,
       };
     case WeatherActionTypes.SET_MODAL_VISIBLE:
       return {
         ...state,
-        modalVisible: action.payload,
+        modalVisible: payload,
       };
     default:
       return state;

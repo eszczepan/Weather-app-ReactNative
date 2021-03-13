@@ -11,9 +11,9 @@ import {
 
 import { fetchWeather } from "../store/actions";
 import { IAppState } from "../store/models";
+import ModalDetials from "./components/molecules/ModalDetails/ModalDetials";
 import SearchForm from "./components/molecules/SearchForm/SearchForm";
 import Weather from "./components/molecules/Weather/Weather";
-import ModalDetials from "./components/molecules/ModalDetails/ModalDetials";
 
 const App: FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");

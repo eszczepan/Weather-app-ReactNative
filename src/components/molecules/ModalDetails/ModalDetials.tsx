@@ -2,17 +2,18 @@ import React, { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "react-native";
 
+import { IWeatherData } from "../../../../store/models";
 import { setModalVisible } from "../../../../store/actions";
 import { IAppState } from "../../../../store/models";
 import MainBox from "../../atoms/MainBox/MainBox";
 
 interface IProps {
-  weather: any;
+  weather: IWeatherData;
 }
 
 const ModalDetials: FC<IProps> = ({ weather }) => {
   const dispatch = useDispatch();
-  const { modalVisible, detailsDayIndex } = useSelector(
+  const { detailsDayIndex, modalVisible } = useSelector(
     (state: IAppState) => state.weather
   );
 

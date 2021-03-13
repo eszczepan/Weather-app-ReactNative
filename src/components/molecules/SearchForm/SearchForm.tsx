@@ -1,23 +1,24 @@
 import React, { FC } from "react";
 import {
-  TextInput,
-  TouchableOpacity,
   StatusBar,
   StyleSheet,
+  TextInput,
+  TouchableOpacity,
   View,
 } from "react-native";
+
 import Icon from "react-native-vector-icons/AntDesign";
 
 interface IProps {
+  onSetSearchValue(value: string): void;
+  onSubmit(): void;
   searchValue: string;
-  onSetSearchValue: any;
-  onSubmit: any;
 }
 
 const SearchForm: FC<IProps> = ({
-  searchValue,
   onSetSearchValue,
   onSubmit,
+  searchValue,
 }) => {
   return (
     <View style={styles.container}>

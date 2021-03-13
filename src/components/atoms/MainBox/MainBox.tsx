@@ -1,14 +1,14 @@
 import React, { FC } from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import Icon from "react-native-vector-icons/AntDesign";
 import { IWeather } from "../../../../store/models";
 
 interface IProps {
-  weather: IWeather;
   city: string;
   modal?: boolean;
-  onCloseModal?: any;
+  onCloseModal?(): void;
+  weather: IWeather;
 }
 
 const MainBox: FC<IProps> = ({ city, weather, modal, onCloseModal }) => {
@@ -78,7 +78,7 @@ const MainBox: FC<IProps> = ({ city, weather, modal, onCloseModal }) => {
           </View>
           <View style={styles.detailsBox}>
             <Text style={styles.detailsDesc}>RAIN</Text>
-            <Text style={styles.baseText}>{weather.pop}%</Text>
+            <Text style={styles.baseText}>{weather.pop} %</Text>
           </View>
         </View>
       </View>
@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
   },
   temp: {
     fontSize: 60,
+    fontWeight: "bold",
   },
   details: {
     width: "100%",

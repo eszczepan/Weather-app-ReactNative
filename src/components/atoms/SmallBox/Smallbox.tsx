@@ -1,13 +1,14 @@
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
-import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import Icon from "react-native-vector-icons/AntDesign";
-import { setModalVisible, setDetialsDay } from "../../../../store/actions";
+import { IWeather } from "../../../../store/models";
+import { setDetialsDay, setModalVisible } from "../../../../store/actions";
 
 interface IProps {
-  weather: any;
   index: number;
+  weather: IWeather;
 }
 
 const Smallbox: FC<IProps> = ({ weather, index }) => {

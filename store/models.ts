@@ -1,5 +1,5 @@
 export interface IWeatherState {
-  data: IWeather[] | null;
+  data: IWeatherData | null;
   error: string;
   modalVisible: boolean;
   detailsDayIndex: number;
@@ -52,4 +52,14 @@ export interface IWeather {
   wind_dir: number;
   wind_gust_spd: number;
   wind_spd: number;
+}
+
+export interface IWeatherData {
+  city_name: string;
+  lon: string;
+  timezone: string;
+  lat: string;
+  country_code: string;
+  state_code: string;
+  data: IWeather[];
 }

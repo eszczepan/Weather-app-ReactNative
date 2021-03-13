@@ -8,15 +8,14 @@ import {
   View,
 } from "react-native";
 
-import { IWeather } from "../../../../store/models";
+import { IWeather, IWeatherData } from "../../../../store/models";
 import MainBox from "../../atoms/MainBox/MainBox";
 import SmallBox from "../../atoms/SmallBox/Smallbox";
 
 interface IProps {
-  // weather: IWeather[] | null;
-  weather: any;
   error: string;
   loading: boolean;
+  weather: IWeatherData;
 }
 
 const Weather: FC<IProps> = ({ weather, error, loading }) => {
@@ -53,7 +52,7 @@ const Weather: FC<IProps> = ({ weather, error, loading }) => {
           <MainBox city={weather.city_name} weather={weather.data[0]} />
         </View>
 
-        {weather.data.map((day: any, index: number) =>
+        {weather.data.map((day: IWeather, index: number) =>
           index === 0 ? null : (
             <SmallBox key={index} weather={day} index={index} />
           )
